@@ -83,4 +83,25 @@ GROUP BY län
 ORDER BY antal_undersökningar DESC
 FETCH FIRST 5 ROWS ONLY;
 
+--Uppgift H
+
+PROMPT Uppgift H: Andel distans och andel bundna utbildningar inom respektive utbildingsområde
+
+SELECT
+	utbildningsområde,
+	studieform,
+	COUNT(*) AS antal_utbildningar
+FROM applications
+GROUP BY utbildningsområde, studieform
+ORDER BY utbildningsområde DESC;
+
+-- Uppgift I
+
+PROMPT Uppfigt I: Antal utbildningar som innehåller ordet AI
+
+SELECT
+	COUNT(DISTINCT utbildningsnamn) AS antal_AI_utbildningar
+FROM applications
+WHERE utbildningsnamn LIKE '%AI%';
+
 EXIT
