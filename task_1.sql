@@ -89,10 +89,10 @@ PROMPT Uppgift H: Andel distans och andel bundna utbildningar inom respektive ut
 
 SELECT
 	utbildningsområde,
-	studieform,
-	COUNT(*) AS antal_utbildningar
+	COUNT(CASE WHEN studieform = 'Bunden' THEN 1 END) AS antal_bundna,
+	COUNT(CASE WHEN studieform = 'Distans' THEN 1 END) AS antal_distans
 FROM applications
-GROUP BY utbildningsområde, studieform
+GROUP BY utbildningsområde
 ORDER BY utbildningsområde DESC;
 
 -- Uppgift I
